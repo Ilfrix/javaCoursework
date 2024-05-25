@@ -2,6 +2,8 @@ package com.example.demo;
 
 
 import com.example.demo.entities.CustomUser;
+import com.example.demo.entities.Role;
+import com.example.demo.repositories.RoleRepository;
 import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +18,9 @@ public class RegistrationController {
     private UserService userService;
 
     @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/registration")
@@ -24,14 +29,17 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String registration(@RequestParam String userName,
+    public String registration(@RequestParam String name,
                                @RequestParam String role,
                                @RequestParam String password) {
         CustomUser user = new CustomUser();
-        user.setName(userName);
-        user.setRole(role);
+        user.setName(name);
         user.setPassword(passwordEncoder.encode(password));
+        Role newRole = roleRepository.findByName("USER");
+        user.setRole(newRole);
         userService.saveUser(user);
+
+//        role.save(userRole);
         return "redirect:/login";
     }
 }

@@ -17,21 +17,20 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/", "/catalog", "/registration").permitAll()
+                        .requestMatchers("/registration").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .failureUrl("/login-error")
-                        .usernameParameter("userName")
+                        .usernameParameter("name")
                         .passwordParameter("password")
                         .permitAll()
-                        .defaultSuccessUrl("/", true)
+                        .defaultSuccessUrl("/menu", true)
                 )
                 .logout((logout) -> logout.permitAll());
 

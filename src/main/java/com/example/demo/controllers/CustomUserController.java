@@ -20,7 +20,7 @@ public class CustomUserController {
     }
     @PostMapping("/")
     public CustomUser createUser(@RequestBody CustomUser newCustomUser) {
-        System.out.println("OUTPUT" + newCustomUser.id + newCustomUser.name + newCustomUser.role);
+        System.out.println("OUTPUT" + newCustomUser.id + newCustomUser.name + newCustomUser.getRole().getName());
         return customUserRepository.save(newCustomUser);
     }
     @DeleteMapping("/{id}")

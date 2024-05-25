@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Аккаунт пользователя</title>
+<!--    <link href = "../static/css/account.css" rel = "stylesheet" th:href="@{/css/account.css}">-->
+</head>
+<body>
+<a href="menu">Меню</a>
+<a href="admin/create_pizza">Творить!</a>
+<h1>Аккаунт пользователя</h1>
+
+<h2>Информация о пользователе</h2>
+<table>
+    <tr>
+        <th>Имя пользователя:</th>
+        <td><p th:text="${user.name}"></p></td>
+    </tr>
+<!--    <tr>-->
+<!--        <th>Роль:</th>-->
+<!--        <td><p th:text="${user.role}"></p></td>-->
+<!--    </tr>-->
+</table>
+
+</body>
+</html>

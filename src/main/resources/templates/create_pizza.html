@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructor</title>
+</head>
+<body>
+<a href="/menu">Меню</a>
+<a href="/cabinet">Личный кабинет</a>
+<h1>Добавить пиццу</h1>
+<form th:action="@{/admin/create_pizza}" method="post">
+    <label for="name">Название:</label>
+    <input type="text" id="name" name="name"><br>
+    <label for="diameter">Диаметер:</label>
+    <input type="xs:integer" id="diameter" name="diameter"><br>
+    <button type="submit">Создать!</button>
+</form>
+</body>
+</html>

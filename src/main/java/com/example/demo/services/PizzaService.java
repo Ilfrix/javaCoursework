@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 public class PizzaService {
     private PizzaRepository pizzaRepository;
 
+
+    public void savePizza(Pizza pizza) {
+        pizzaRepository.save(pizza);
+    }
     public Long createPizza(Long id, String name, int diameter){
         Pizza pizza = new Pizza(id, name, diameter);
         pizzaRepository.save(pizza);
@@ -28,5 +32,9 @@ public class PizzaService {
         pizza.name = name;
         pizza.diameter = diameter;
         pizzaRepository.save(pizza);
+    }
+
+    public Iterable<Pizza> findAll() {
+        return pizzaRepository.findAll();
     }
 }

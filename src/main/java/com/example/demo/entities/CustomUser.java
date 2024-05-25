@@ -2,7 +2,12 @@ package com.example.demo.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import com.example.demo.entities.Role;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -13,23 +18,26 @@ public class CustomUser {
     public Long id;
     @Column
     public String name;
-    @Column
-    public String role;
+//    @OneToOne(mappedBy = "user")
+//    @JoinColumn(name = "users_1_id")
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "roles_id")
+    public Role role;
     @Column
     public String password;
 
     public CustomUser() {}
 
-    public CustomUser(Long id, String name, String role) {
+    public CustomUser(Long id, String name, Role role) {
         this.id = id;
         this.name = name;
         this.role = role;
     }
-    public CustomUser(String name, String role) {
+    public CustomUser(String name, Role role) {
         this.name = name;
         this.role = role;
     }
-
 
     public Long getId() {
         return id;
@@ -39,7 +47,7 @@ public class CustomUser {
         return name;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
@@ -51,7 +59,7 @@ public class CustomUser {
         this.name = name;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -61,5 +69,15 @@ public class CustomUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomUser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", role=" + role +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

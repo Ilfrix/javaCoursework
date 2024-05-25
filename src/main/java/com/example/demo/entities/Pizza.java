@@ -9,7 +9,6 @@ import java.util.UUID;
 
 @Data
 @Entity
-@NoArgsConstructor
 @Table(name = "pizzas")
 public class Pizza  {
     @Id
@@ -19,6 +18,11 @@ public class Pizza  {
     public String name;
     @Column(name="diameter")
     public int diameter;
+
+    public Pizza() {
+        name = "no_pizza";
+        diameter = -1;
+    }
 
     public Pizza(Long id, String name, int diameter){
         this.id = id;
