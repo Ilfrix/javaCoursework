@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.CustomUser;
+import com.example.demo.entities.Pizza;
 import com.example.demo.repositories.CustomUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +25,9 @@ public class UserService implements UserDetailsService {
 
     public void setCustomUserRepository(CustomUserRepository customUserRepository){
         this.customUserRepository = customUserRepository;
+    }
+    public Iterable<CustomUser> findAll() {
+        return customUserRepository.findAll();
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -14,8 +14,8 @@ public class PizzaService {
     public void savePizza(Pizza pizza) {
         pizzaRepository.save(pizza);
     }
-    public Long createPizza(Long id, String name, int diameter){
-        Pizza pizza = new Pizza(id, name, diameter);
+    public Long createPizza(Long id, String name, int diameter, float cost){
+        Pizza pizza = new Pizza(id, name, diameter, cost);
         pizzaRepository.save(pizza);
         return pizza.getId();
     }

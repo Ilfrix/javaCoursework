@@ -71,13 +71,25 @@ public class MainController {
 
     @PostMapping("/admin/create_pizza")
     public String CreateNewPizza(@RequestParam String name,
-                                 @RequestParam int diameter) {
+                                 @RequestParam int diameter,
+                                 @RequestParam float cost) {
         // Получаем объект пользователя из базы данных по его имени
         Pizza pizza = new Pizza();
         pizza.setName(name);
         pizza.setDiameter(diameter);
+        pizza.setCost(cost);
         pizzaService.savePizza(pizza);
         return "redirect:/menu";
+    }
+
+    @GetMapping("/admin/users")
+    public String UsersPage(Model model, Principal principal) {
+        model.addAttribute("users_1", userService.findAll());
+        return "users";
+//        }
+//        else {
+//            return "cabinet";
+//        }
     }
 
 }

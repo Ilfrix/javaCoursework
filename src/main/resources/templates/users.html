@@ -8,17 +8,19 @@
 <table>
     <thead>
     <tr>
-        <th>Номер пиццы</th>
-        <th>Название</th>
-        <th>Диаметер</th>
-        <th></th>
+        <th>Идентификатор</th>
+        <th>Имя</th>
+        <th>Почта</th>
+        <th>Роль</th>
+
     </tr>
     </thead>
     <tbody>
-    <tr th:each="pizza : ${pizzas}">
-        <td th:text="${pizza.id}"></td>
-        <td th:text="${pizza.name}"></td>
-        <td th:text="${pizza.diameter}"></td>
+    <tr th:each="user : ${users_1}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.role.name}"></td>
     </tr>
     </tbody>
 </table>

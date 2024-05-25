@@ -24,15 +24,19 @@ public class CustomUser {
     @ManyToOne
     @JoinColumn(name = "roles_id")
     public Role role;
+
+    @Column
+    public String email;
     @Column
     public String password;
 
     public CustomUser() {}
 
-    public CustomUser(Long id, String name, Role role) {
+    public CustomUser(Long id, String name, Role role, String email) {
         this.id = id;
         this.name = name;
         this.role = role;
+        this.email = email;
     }
     public CustomUser(String name, Role role) {
         this.name = name;
@@ -69,6 +73,12 @@ public class CustomUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

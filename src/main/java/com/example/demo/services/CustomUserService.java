@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 public class CustomUserService {
     private CustomUserRepository customUserRepository;
 
-    public Long createUser(Long id, String name, Role role) {
-        CustomUser customUser = new CustomUser(id, name, role);
+    public Long createUser(Long id, String name, Role role, String email) {
+        CustomUser customUser = new CustomUser(id, name, role, email);
         customUserRepository.save(customUser);
         return customUser.getId();
     }

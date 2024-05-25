@@ -30,13 +30,14 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String registration(@RequestParam String name,
-                               @RequestParam String role,
+                               @RequestParam String email,
                                @RequestParam String password) {
         CustomUser user = new CustomUser();
         user.setName(name);
         user.setPassword(passwordEncoder.encode(password));
         Role newRole = roleRepository.findByName("USER");
         user.setRole(newRole);
+        user.setEmail(email);
         userService.saveUser(user);
 
 //        role.save(userRole);

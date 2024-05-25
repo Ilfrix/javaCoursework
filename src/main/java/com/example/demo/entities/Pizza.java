@@ -19,15 +19,19 @@ public class Pizza  {
     @Column(name="diameter")
     public int diameter;
 
+    @Column
+    public float cost;
+
     public Pizza() {
         name = "no_pizza";
         diameter = -1;
     }
 
-    public Pizza(Long id, String name, int diameter){
+    public Pizza(Long id, String name, int diameter, float cost){
         this.id = id;
         this.name = name;
         this.diameter = diameter;
+        this.cost = cost;
     }
     public Pizza(String name, int diameter){
         this.name = name;
@@ -56,5 +60,10 @@ public class Pizza  {
 
     public void setDiameter(int diameter) {
         this.diameter = diameter;
+    }
+
+    public float getCost() { return cost; }
+    public void setCost(float cost) {
+        this.cost = cost;
     }
 }
